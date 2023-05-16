@@ -34,8 +34,8 @@ def start_attack():
 	#Types of port scans in the nmap tool		
 	# scanner_type = ['-sU','-sO','-sM','-sN','-sF','-sS','-sT','-sA','-sW','-sX']
 	# netx_port = port_range
-	global r
-	scan_ports()
+    global r
+    scan_ports()
 	# while netx_port < NUMBER_OF_PORTS or scanner_number != 0:
 	#	r.add(scan_ports.delay(current_port,netx_port,scanner_type[scanner_number]))
 	#	if netx_port == NUMBER_OF_PORTS:

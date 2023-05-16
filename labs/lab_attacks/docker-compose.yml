@@ -107,7 +107,7 @@ services:
        context: .
        dockerfile: ./netflow_generator/Dockerfile
        args:
-          - SYSTEM=${SYSTEM}
+          - SYSTEM=ubuntu:20.04
     volumes:
       -  ./results/NetflowMachineResults:/home/total-traffic/
     networks:

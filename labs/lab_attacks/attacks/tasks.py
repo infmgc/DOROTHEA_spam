@@ -30,14 +30,15 @@ import time
 
 
 @app.task
-def scan_ports(start_port,end_port,scanner_type): 
+#def scan_ports(start_port,end_port,scanner_type): 
+def scan_ports(): 
 	#timeSleep = random.randrange(3,5)
 	#results = nm.scan(randomize_ip(), str(start_port) + '-'+ str(end_port) ,arguments=scanner_type + ' --scan-delay '+str(timeSleep))
 	#nm = nmap.PortScanner()
 	#results = nm.scan(randomize_ip(), str(start_port) + '-'+ str(end_port) ,arguments=scanner_type)
-	print ("voy a hacer el ping")
- 	os.system('ping -c 3 8.8.8.8')
- 	print ("ya he hecho el ping")	
+    print ("voy a hacer el ping")
+    os.system('ping -c 3 8.8.8.8')
+    print ("ya hice el ping")
 	
 
 

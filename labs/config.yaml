@@ -18,8 +18,8 @@
 ## along with this program. If not, see <http://www.gnu.org/licenses/>.
 ##
  lab_attacks: 
-  attackers: 100
-  slaves: 200
+  attackers: 1
+  slaves: 1 
   sampling: 
     enabled: true
     packet_sampling: 10000
