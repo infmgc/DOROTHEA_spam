@@ -26,25 +26,26 @@ import subprocess as sp
 r = ResultSet([])
 
 def start_attack():
-	NUMBER_OF_PORTS = 65535
-	current_port = 1
-	scanner_number = 9
+	# NUMBER_OF_PORTS = 65535
+	# current_port = 1
+	# scanner_number = 9
 	#This number must be a divisor of 65535
-	port_range = 771
+	# port_range = 771
 	#Types of port scans in the nmap tool		
-	scanner_type = ['-sU','-sO','-sM','-sN','-sF','-sS','-sT','-sA','-sW','-sX']
-	netx_port = port_range
+	# scanner_type = ['-sU','-sO','-sM','-sN','-sF','-sS','-sT','-sA','-sW','-sX']
+	# netx_port = port_range
 	global r
-	while netx_port < NUMBER_OF_PORTS or scanner_number != 0:
-		r.add(scan_ports.delay(current_port,netx_port,scanner_type[scanner_number]))
-		if netx_port == NUMBER_OF_PORTS:
-				scanner_number = scanner_number -1
-				current_port = 1
-				netx_port = 771
+	scan_ports()
+	# while netx_port < NUMBER_OF_PORTS or scanner_number != 0:
+	#	r.add(scan_ports.delay(current_port,netx_port,scanner_type[scanner_number]))
+	#	if netx_port == NUMBER_OF_PORTS:
+	#			scanner_number = scanner_number -1
+	#			current_port = 1
+	#			netx_port = 771
 
 		#Update the ports to scan
-		current_port = netx_port
-		netx_port = netx_port + port_range
+	#	current_port = netx_port
+	#	netx_port = netx_port + port_range
 	
 
 def end_attacks():
