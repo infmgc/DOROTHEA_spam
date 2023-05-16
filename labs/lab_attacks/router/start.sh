@@ -32,6 +32,8 @@ tcpdump -i eth0 -C 1  -w '/home/tcpdump-capture/capture.pcap'
 
 /bin/bash
 
-
+iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
+route add default gw 140.30.20.1
+route del default gw 152.148.48.1
 
 
