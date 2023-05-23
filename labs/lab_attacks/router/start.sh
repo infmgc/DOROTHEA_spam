@@ -22,6 +22,12 @@
 sampling=10000
 iptables -t mangle -A PREROUTING -m statistic --mode nth --every $sampling --packet 0  -j TEE --gateway 140.30.20.3
 
+route add default gw 140.30.20.1
+route del default gw 152.148.48.1
+
+#We indicate that NAT traffic goes to the Internet
+iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
+
 #Launch cron to generate CIC flows
 cron && tail -f /var/log/cron.log &
 
@@ -29,10 +35,6 @@ cron && tail -f /var/log/cron.log &
 
 #Launch tcp-dump storing the packages every 20 mb
 tcpdump -i eth0 -C 1  -w '/home/tcpdump-capture/capture.pcap' 
-
-iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
-route add default gw 140.30.20.1
-route del default gw 152.148.48.1
 
 /bin/bash
 
