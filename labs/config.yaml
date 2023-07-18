@@ -21,7 +21,7 @@
   attackers: 1
   slaves: 1 
   sampling: 
-    enabled: true
+    enabled: false
     packet_sampling: 10000
   networks:
     internal_net: 140.30.20.0
@@ -36,7 +36,7 @@
     password: dasynnplbeudcdvq
     smtp: smtp.gmail.com
   sampling: 
-    enabled: true
+    enabled: false
     packet_sampling: 10000
   networks:
     internal_net: 152.148.48.0
