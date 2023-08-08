@@ -34,8 +34,12 @@ iptables -P FORWARD DROP
 
 iptables -A INPUT -i eth0 -p tcp --dport 22   -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A OUTPUT -o eth0 -p tcp --sport 22 -d 152.148.48.254 -m state --state ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp --dport 22 -d 152.148.48.2 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp --sport 22 -d 140.30.20.2 -m state --state ESTABLISHED -j ACCEPT
 
 iptables -A OUTPUT -o eth0 -p tcp --dport 22 -d 152.148.48.254 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp --dport 22 -d 152.148.48.2 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A OUTPUT -o eth0 -p tcp --dport 22 -d 140.30.20.2 -m state --state NEW,ESTABLISHED -j ACCEPT
 iptables -A INPUT -i eth0 -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT
 
 #We redirect the traffic to the netflow module, to generate the flows
@@ -44,10 +48,12 @@ iptables -I FORWARD -j NETFLOW
 iptables -I INPUT -j NETFLOW
 iptables -I OUTPUT -j NETFLOW
 
+/etc/init.d/ssh start
+
+
 #Launch cron to generate CIC flows
 cron && tail -f /var/log/cron.log &
 
-/etc/init.d/ssh start
 
 tcpdump -i eth0 -C 1  -w '/home/tcpdump-capture/capture.pcap'
 
