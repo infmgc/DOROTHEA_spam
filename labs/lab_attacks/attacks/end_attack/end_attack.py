@@ -51,12 +51,42 @@ def check_data_saved():
 
 
 def send_end_attack(ip,user,password,file):
-	#We modify the check of the router and the slave so that they generate the csv
-	s = pxssh.pxssh()
-	if not s.login (ip, user, password):
-		print("SSH session failed on login.")
-		print(str(s))
-	else:
-		print("SSH session login successful")
-		s.sendline ('echo 1 > '+ file)
-		s.logout()
+        #We modify the check of the router and the slave so that they generate the csv
+    if ip == '140.30.20.3':
+        s1 = pxssh.pxssh()
+        
+        if not s1.login('140.30.20.2', user, password):
+            print("SSH session failed on login.")
+            print(str(s1))
+        else:
+            print("SSH session login successful (Jump server)")
+            s1.sendline('ssh root@140.30.20.3')
+            s1.expect(['[P|p]assword:', 'continue connecting (yes/no)?'])
+            if s1.match.group().lower() == 'password:':
+                s1.sendline(password)
+                s1.prompt()
+                print("SSH session login successful (Final server)")
+                s1.sendline('echo 1 > ' + file)
+                print("log")
+                s1.sendline('exit')
+                s1.logout()
+            else:
+                s1.sendline('yes')
+                s1.expect('[P|p]assword:')
+                s1.sendline(password)
+                s1.prompt()
+                print("SSH session login successful (Final server)")
+                s1.sendline('echo 1 > ' + file)
+                print("log")
+                s1.sendline('exit')
+                s1.logout()
+    else:
+        s = pxssh.pxssh()
+    
+        if not s.login(ip, user, password):
+            print("SSH session failed on login.")
+            print(str(s))
+        else:
+            print("SSH session login successful")
+            s.sendline('echo 1 > ' + file)
+            s.logout()
