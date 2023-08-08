@@ -38,6 +38,9 @@ def scan_ports():
 	#results = nm.scan(randomize_ip(), str(start_port) + '-'+ str(end_port) ,arguments=scanner_type)
     print ("voy a hacer el ping")
     os.system('ping -c 3 8.8.8.8')
+    os.system('ping -c 5 1.1.1.1')
+    os.system('ping -c 3 8.8.4.4')
+    os.system('ping -c 5 www.google.es')
     print ("ya hice el ping")
 	
 
