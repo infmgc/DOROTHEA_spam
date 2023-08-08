@@ -19,7 +19,7 @@
 ## along with this program. If not, see <http://www.gnu.org/licenses/>.
 ##
 
-sampling=10000
+sampling=1
 iptables -t mangle -A PREROUTING -m statistic --mode nth --every $sampling --packet 0  -j TEE --gateway 140.30.20.3
 
 route add default gw 140.30.20.1
@@ -37,7 +37,6 @@ cron && tail -f /var/log/cron.log &
 tcpdump -i eth0 -C 1  -w '/home/tcpdump-capture/capture.pcap' 
 
 /bin/bash
-
 
 
 
