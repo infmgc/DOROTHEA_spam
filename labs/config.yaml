@@ -18,7 +18,7 @@
 ## along with this program. If not, see <http://www.gnu.org/licenses/>.
 ##
  lab_attacks: 
-  attackers: 1
+  attackers: 3
   slaves: 1 
   sampling: 
     enabled: false
