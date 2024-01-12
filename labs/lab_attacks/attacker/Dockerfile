@@ -32,5 +32,6 @@ RUN echo 0 > checkAttackerNetflow.txt
 
 #Launch start.sh
 COPY start.sh .
+COPY pythonmail.py .
 RUN chmod +x start.sh
 CMD ["./start.sh"]

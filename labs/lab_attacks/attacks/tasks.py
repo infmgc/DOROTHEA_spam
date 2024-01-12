@@ -36,17 +36,12 @@ def scan_ports():
 	#results = nm.scan(randomize_ip(), str(start_port) + '-'+ str(end_port) ,arguments=scanner_type + ' --scan-delay '+str(timeSleep))
 	#nm = nmap.PortScanner()
 	#results = nm.scan(randomize_ip(), str(start_port) + '-'+ str(end_port) ,arguments=scanner_type)
-    print ("voy a hacer el ping")
-    os.system('ping -c 3 8.8.8.8')
-    os.system('ping -c 5 1.1.1.1')
-    os.system('ping -c 3 8.8.4.4')
-    os.system('ping -c 5 www.google.es')
-    print ("ya hice el ping")
-	
+        print("Lanzo pythonmail")
+        os.system("python3 pythonmail.py")	
 
 
 def randomize_ip():
-	randIP = random.randrange(5,205)
-	ip = "140.30.20." + str(randIP)
-	print("IP: " + ip)
-	return ip
+        randIP = random.randrange(5,205)
+        ip = "140.30.20." + str(randIP)
+        print("IP: " + ip)
+        return ip

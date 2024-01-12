@@ -18,7 +18,7 @@
 ## You should have received a copy of the GNU Lesser General Public License
 ## along with this program. If not, see <http://www.gnu.org/licenses/>.
 ##
-sampling=10000
+sampling=1
 iptables -t mangle -A PREROUTING -m statistic --mode nth --every $sampling --packet 0  -j TEE --gateway 152.148.48.3
 
 #We indicate the default gateway is that of the WAN network, through which it goes to the internet
